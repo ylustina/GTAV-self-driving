@@ -22,7 +22,7 @@ def roi(img, vertices):
 
 
 def process_img(original_image):
-    # TODO look up docstrings PEP 257
+    # TODO look up docstrings PEP 257 & annotations PEP 450something
 
     """
     Note:
@@ -31,6 +31,7 @@ def process_img(original_image):
     :return:
 
     """
+
     processed_img = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
     processed_img = cv2.Canny(processed_img, threshold1=200, threshold2=300)
     processed_img = cv2.GaussianBlur(processed_img, (5, 5), 0)
