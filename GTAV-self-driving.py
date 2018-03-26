@@ -45,4 +45,8 @@ def main():
             break
 
 
-main()
+# if you're not running this file directly, don't run this code
+if __name__ == "__main__":
+    main()
+
+# look up side effects
