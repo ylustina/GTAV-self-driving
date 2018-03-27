@@ -3,6 +3,15 @@ import numpy as np
 from PIL import ImageGrab
 
 
+
+def roi(img, vertices):
+    mask = np.zeros_like(img)
+    cv2.fillPoly(mask, vertices, 255)
+    masked = cv2.bitwise_and(img, mask)
+
+    return masked
+
+
 def draw_lines(img, lines):
     try:
         for line in lines:
@@ -13,15 +22,10 @@ def draw_lines(img, lines):
         pass
 
 
-def roi(img, vertices):
-    mask = np.zeros_like(img)
-    cv2.fillPoly(mask, vertices, 255)
-    masked = cv2.bitwise_and(img, mask)
-
-    return masked
 
 
-def process_img(original_image):
+
+def img_ops(original_image):
     # TODO look up docstrings PEP 257 & annotations PEP 450something
 
     """
@@ -48,7 +52,7 @@ def process_img(original_image):
 def main():
     while True:
         screen = np.array(ImageGrab.grab(bbox=(0, 20, 800, 620)))
-        new_screen = process_img(screen)
+        new_screen = img_ops(screen)
 
         cv2.imshow('window', new_screen)
 
