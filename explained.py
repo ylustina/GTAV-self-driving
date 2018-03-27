@@ -17,7 +17,6 @@ def roi(img, vertices):
     return masked
 
 
-
 def draw_lines(img, lines):
     try:
         for line in lines:

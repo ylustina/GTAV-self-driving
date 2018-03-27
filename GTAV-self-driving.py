@@ -28,11 +28,6 @@ def draw_lines(img, lines):
         pass
 
 
-# def draw_lanes(img,lines, color=[50, 153, 204], thickness=3):
-
-
-
-
 def img_ops(image):
     # TODO look up docstrings PEP 257 & annotations PEP 450something
 
