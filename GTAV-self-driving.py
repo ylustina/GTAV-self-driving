@@ -12,6 +12,14 @@ def roi(img, vertices):
     return masked
 
 
+
+# purple
+# 153-50-204
+# R   G   B
+# 50-153-204
+# G   R   B
+
+
 def draw_lines(img, lines):
     try:
         for line in lines:
