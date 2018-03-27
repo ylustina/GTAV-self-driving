@@ -28,14 +28,18 @@ def draw_lines(img, lines):
         pass
 
 
+# def draw_lanes(img,lines, color=[50, 153, 204], thickness=3):
+
+
+
+
 def img_ops(image):
     # TODO look up docstrings PEP 257 & annotations PEP 450something
-
 
     """
     Note:
 
-    :param original_img:
+    :param image:
     :return:
 
     """
@@ -44,12 +48,12 @@ def img_ops(image):
 
     processed_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     processed_img = cv2.Canny(processed_img, threshold1=200, threshold2=300)
-    processed_img = cv2.GaussianBlur(processed_img, (5, 5), 0)
+    processed_img = cv2.GaussianBlur(processed_img, (3, 3), 0)
 
     vertices = np.array([[10, 500], [10, 300], [300, 200], [500, 200], [800, 300], [800, 500]], np.int32)
     processed_img = roi(processed_img, [vertices])
 
-    lines = cv2.HoughLinesP(processed_img, 1, np.pi/180, 180, 20, 15)
+    lines = cv2.HoughLinesP(processed_img, 1, np.pi / 180, 180, np.array([]), 100, 5)
     draw_lines(processed_img, lines)
 
     return processed_img, original_img
@@ -58,6 +62,7 @@ def img_ops(image):
 def main():
     while True:
         screen = np.array(ImageGrab.grab(bbox=(0, 20, 800, 620)))
+
         new_screen, original_img = img_ops(screen)
 
         cv2.imshow('img_ops', new_screen)
